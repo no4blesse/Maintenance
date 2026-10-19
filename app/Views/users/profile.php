@@ -1,0 +1,4 @@
+<?php if($u['must_change_password']): ?><div class="alert alert-warning">กรุณาเปลี่ยนรหัสผ่านก่อนใช้งานระบบ</div><?php endif ?>
+<?= $this->partial('shared/form',['title'=>'โปรไฟล์ของฉัน','action'=>'/profile','fields'=>['name'=>['ชื่อ','text',[],true],'phone'=>['โทรศัพท์','text'],'locale'=>['ภาษา','select',['th'=>'ไทย','en'=>'English'],true]],'values'=>$u,'notice'=>'']) ?>
+<?php $passwordFields=[]; if(empty($canRecoverPassword)){$passwordFields['current_password']=['รหัสผ่านปัจจุบัน','password',[],true];} $passwordFields+=['password'=>['รหัสผ่านใหม่ (10 ตัวขึ้นไป ตัวใหญ่ เล็ก ตัวเลข)','password',[],true],'password_confirmation'=>['ยืนยันรหัสผ่านใหม่','password',[],true]]; ?>
+<div class="mt-4"><?= $this->partial('shared/form',['title'=>'เปลี่ยนรหัสผ่าน','action'=>'/profile/password','fields'=>$passwordFields,'values'=>[],'notice'=>!empty($canRecoverPassword)?'ยืนยันผ่านลิงก์กู้คืนแล้ว ตั้งรหัสผ่านใหม่ได้โดยไม่ต้องกรอกรหัสเดิมภายใน 10 นาที':'']) ?></div>

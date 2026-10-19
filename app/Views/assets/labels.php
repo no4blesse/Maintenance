@@ -1,0 +1,3 @@
+<div class="page-header"><h1 class="page-title">ป้าย QR อุปกรณ์</h1><button class="btn btn-primary" id="print-labels">พิมพ์</button></div>
+<div class="row g-3"><?php foreach($rows as $a): ?><div class="col-sm-4"><div class="card card-body text-center"><div data-qr="<?= e(absolute_url('/a/'.$a['qr_token'])) ?>"></div><strong><?= e($a['asset_code']) ?></strong><span><?= e($a['name']) ?></span><small>เข้าสู่ระบบเพื่อดูรายละเอียด</small></div></div><?php endforeach ?></div>
+<?php $this->start('vendor_scripts'); ?><script src="<?= e(asset('vendor/qrcode/qrcode.js')) ?>"></script><?php $this->stop(); $this->start('scripts'); ?><script src="<?= e(asset('js/labels.js')) ?>"></script><?php $this->stop(); ?>
